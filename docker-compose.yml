@@ -1,9 +1,9 @@
 version: '3'
 services:
 
-  todo_app:
+  leitura:
     build: .
-    container_name: todo-app
+    container_name: leitura-app
     restart: unless-stopped
     tty: true
     working_dir: /var/www/html
@@ -15,7 +15,7 @@ services:
       - "8080:80"
 
 
-  mysql-app:
+  leitura-mysql-app:
     image: mysql:5.7.22
     command: --innodb-use-native-aio=0
     ports:
@@ -23,7 +23,7 @@ services:
     volumes:
       - .docker/dbdata:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: db-laravel
+      MYSQL_DATABASE: db-leitura
       MYSQL_ROOT_PASSWORD: laravel
     networks:
       - app-network
